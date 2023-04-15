@@ -20,7 +20,7 @@ def extract_text(pdf_path):
             text = ""
             for page_num in range(num_pages):
                 page = pdf_reader.pages[page_num]
-                text += page.extract_text(True)
+                text += page.extract_text()
 
             return text
 
