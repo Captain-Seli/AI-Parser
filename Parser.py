@@ -9,15 +9,15 @@ def parse_pdf():
     try:
         with open(pdf_path, "rb") as pdf_file:
             # Create a PDF reader object
-            pdf_reader = PyPDF2.PdfFileReader(pdf_file)
+            pdf_reader = PyPDF2.PdfReader(pdf_file)
 
             # Get the number of pages in the PDF document
-            num_pages = pdf_reader.getNumPages()
+            num_pages = len(pdf_reader.pages)
 
             # Loop through each page and extract the text
             for page_num in range(num_pages):
-                page = pdf_reader.getPage(page_num)
-                text = page.extractText()
+                page = pdf_reader.pages[page_num]
+                text = page.extract_text()
                 print(text)
 
     except FileNotFoundError:
